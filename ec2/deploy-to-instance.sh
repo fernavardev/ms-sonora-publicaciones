@@ -87,7 +87,7 @@ if [[ "$component" == frontend ]]; then
   echo "EC2 smoke test passed: frontend HTTP 200."
 else
   curl --fail --silent --show-error --retry 12 --retry-all-errors --retry-delay 5 \
-    --max-time 10 "http://${public_ip}/publicaciones" --output "$RUNNER_TEMP/publicaciones-response.json"
+    --max-time 10 "http://${public_ip}/api/publicaciones" --output "$RUNNER_TEMP/publicaciones-response.json"
   python3 - "$RUNNER_TEMP/publicaciones-response.json" <<'PY'
 import json
 import sys
@@ -96,7 +96,7 @@ with open(sys.argv[1], encoding="utf-8") as response:
     publicaciones = json.load(response)
 
 if not isinstance(publicaciones, list):
-    raise SystemExit("Public GET /publicaciones did not return a JSON list.")
+    raise SystemExit("Public GET /api/publicaciones did not return a JSON list.")
 
 print(f"EC2 smoke test passed: API HTTP 200 with {len(publicaciones)} records.")
 PY

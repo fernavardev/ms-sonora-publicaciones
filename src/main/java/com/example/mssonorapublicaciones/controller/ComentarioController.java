@@ -12,7 +12,7 @@ import com.example.mssonorapublicaciones.model.Comentario;
 import com.example.mssonorapublicaciones.service.ComentarioService;
 
 @RestController
-@RequestMapping("/comentarios")
+@RequestMapping("/api/comentarios")
 public class ComentarioController {
 
     private final ComentarioService comentarioService;

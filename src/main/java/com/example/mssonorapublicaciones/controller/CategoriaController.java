@@ -12,7 +12,7 @@ import com.example.mssonorapublicaciones.model.Categoria;
 import com.example.mssonorapublicaciones.service.CategoriaService;
 
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping("/api/categorias")
 public class CategoriaController {
 
     private final CategoriaService categoriaService;
